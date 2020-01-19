@@ -461,7 +461,7 @@ class Solitaire():
         if self.first_flip == True:
             self.flip_first_card()
             return
-        elif len(self.deck) == 1 and event == None:
+        elif len(self.deck) == 1:
             self.canvas.delete('deckcard_img'+str(self.deckcard))
             self.canvas.delete('deck')
             return
