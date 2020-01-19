@@ -336,8 +336,8 @@ class Solitaire():
             self.make_new_pile(card, list_location, pile_num, stack)
             return
         elif card != None and topcard != None and card != topcard:
-            card_pile = self.get_cards_in_front(card)
-            for x in card_pile:
+            cards_to_move = self.get_cards_in_front(card)
+            for x in cards_to_move:
                 self.get_opposite_suits(x, topcard, pile_num, stack)
                 topcard = self.piles[list_location][len(self.piles[list_location])-1]
             self.deselect()
@@ -426,9 +426,9 @@ class Solitaire():
         return self.attempt_move_card(card, topcard, suits[0], suits[1], pile_num, stack)
 
     def make_new_pile(self, card, list_location, pile_num, stack):
-        allcard = self.get_cards_in_front(card)
+        cards_to_move = self.get_cards_in_front(card)
         get_loc = self.get_coordinates(pile_num)
-        for item in allcard:
+        for item in cards_to_move:
             self.remove_card(item, stack)
             if self.piles[list_location][0] == None:
                 self.piles[list_location][0] = item
