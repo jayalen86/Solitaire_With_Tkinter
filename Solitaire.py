@@ -384,30 +384,23 @@ class Solitaire():
             if card[0] == 'Q' and topcard[0] == 'K' :
                 self.remove_card(card, stack)
                 self.add_card_to_pile(topcard, card, pile_num)
-                return True
             elif card[0] == 'J' and topcard[0] == 'Q':
                 self.remove_card(card, stack)
                 self.add_card_to_pile(topcard, card, pile_num)
-                return True
             elif card[0] == '1' and topcard[0] == 'J' :
                 self.remove_card(card, stack)
                 self.add_card_to_pile(topcard, card, pile_num)
-                return True
             elif card[0] == '9' and topcard[0] == '1':
                 self.remove_card(card, stack)
                 self.add_card_to_pile(topcard, card, pile_num)
-                return True
             else:
                 try:
                     if int(topcard[0])-1 == int(card[0]):
                         self.remove_card(card, stack)
                         self.add_card_to_pile(topcard, card, pile_num)
-                        return True
-                    else:
-                        return False
                 except:
-                    return False
-        return False
+                    return
+        return
 
     def add_card_to_pile(self, topcard, card, pile_num):
         list_location = pile_num-1
@@ -423,7 +416,8 @@ class Solitaire():
             suits = ['H','D']
         elif card[num] == 'D' or card[num] == 'H':
             suits = ['S','C']
-        return self.attempt_move_card(card, topcard, suits[0], suits[1], pile_num, stack)
+        self.attempt_move_card(card, topcard, suits[0], suits[1], pile_num, stack)
+        return
 
     def make_new_pile(self, card, list_location, pile_num, stack):
         cards_to_move = self.get_cards_in_front(card)
