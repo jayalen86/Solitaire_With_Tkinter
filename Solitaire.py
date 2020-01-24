@@ -263,7 +263,7 @@ class Solitaire():
         return
 
     def remove_card(self, card, stack_card_info):
-        if stack_card_info != None:
+        if stack_card_info:
             pile_num = stack_card_info[0]+7
             list_location = stack_card_info[0]-1
             self.stacks[list_location].remove(card)
@@ -483,7 +483,8 @@ class Solitaire():
         self.canvas.tag_bind("deckcard_img"+str(self.deckcard), '<1>', self.on_click_deck)
         self.deckcard = self.deck[0]
         self.first_flip = False
-        return self.deselect()
+        self.deselect()
+        return 
 
     def deselect(self):
         for item in self.canvas.find_all():
